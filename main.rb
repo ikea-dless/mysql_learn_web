@@ -4,6 +4,8 @@ require 'sinatra/namespace'
 require './lib/database'
 require 'jbuilder'
 
+set :bind, '0.0.0.0'
+
 before do
   @db = Database.new
 end
