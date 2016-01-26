@@ -71,16 +71,15 @@ namespace '/users' do
 
     get '/messages' do
       content_type :json
-      messages = @db.get_messages_by_user_id(params[:id])
-      user = @db.get_user_by_id(params[:id])
+      message_user = @db.get_message_user_by_id(params[:id])
       Jbuilder.encode do |json|
-        json.messages messages do |message|
-          json.id message['id']
-          json.text message['text']
-          json.user_id message['user_id']
+        json.message message_user do |message_user|
+          json.id params[:id]
+          json.text message_user['text']
+          json.user_id message_user['user_id']
           json.user do
-            json.id user.first['id']
-            json.name user.first['name']
+            json.id message_user['id']
+            json.name message_user['name']
           end
         end
       end

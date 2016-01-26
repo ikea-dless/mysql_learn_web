@@ -29,4 +29,9 @@ class Database
     statment = @client.prepare('SELECT * FROM messages WHERE id = ?')
     statment.execute(id)
   end
+
+  def get_message_user_by_id(id = nil)
+    statment = @client.prepare('SELECT * FROM messages LEFT JOIN users ON messages.user_id = users.id WHERE messages.id = ?');
+    statment.execute(id);
+  end
 end
