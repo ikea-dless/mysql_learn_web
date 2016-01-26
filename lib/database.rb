@@ -30,8 +30,8 @@ class Database
     statment.execute(id)
   end
 
-  def get_message_user_by_id(id = nil)
-    statment = @client.prepare('SELECT * FROM messages LEFT JOIN users ON messages.user_id = users.id WHERE messages.id = ?');
-    statment.execute(id);
+  def get_user_messages_by_user_id(user_id = nil)
+    statment = @client.prepare('SELECT messages.id, messages.text, messages.user_id, users.name, users.id as message_user_id FROM messages LEFT JOIN users ON messages.user_id = users.id WHERE messages.user_id = ?');
+    statment.execute(user_id);
   end
 end
