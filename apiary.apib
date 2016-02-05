@@ -1,0 +1,145 @@
+FORMAT: 1A
+HOST: http://localhost:4567
+
+# mysql_learn
+
+MySQL勉強会用ウェブAPI
+
+## Message Collection [/messages]
+
+### List All Message [GET]
+
++ Response 200 (application/json)
+
+        "messages": [
+            {
+                "id": 1,
+                "text": "Ducimus quisquam qui natus magnam quam.",
+                "user_id": 273
+            },
+            {
+                "id": 2,
+                "text": "Aut dolor ex eos enim iste reiciendis sed.",
+                "user_id": 365
+            },
+            {
+                "id": 3,
+                "text": "Magnam perspiciatis laboriosam suscipit non repellat minima.",
+                "user_id": 18
+            }
+        ]
+
+### Create a New Question [POST]
+
+You may create your own question using this action. It takes a JSON
+object containing a question and a collection of answers in the
+form of choices.
+
++ Request (application/json)
+
+        {
+            "question": "Favourite programming language?",
+            "choices": [
+                "Swift",
+                "Python",
+                "Objective-C",
+                "Ruby"
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /questions/2
+
+    + Body
+
+            {
+                "question": "Favourite programming language?",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "choices": [
+                    {
+                        "choice": "Swift",
+                        "votes": 0
+                    }, {
+                        "choice": "Python",
+                        "votes": 0
+                    }, {
+                        "choice": "Objective-C",
+                        "votes": 0
+                    }, {
+                        "choice": "Ruby",
+                        "votes": 0
+                    }
+                ]
+            }
+
+## Users Collection [/users]
+
+### List All Users [GET]
++ Response 200 (application/json)
+
+        "users": [
+            {
+                "id": 1,
+                "name": "Flow Harey"
+            },
+            {
+                "id": 2,
+                "text": "Julliane Legrus"
+            }
+            {
+                "id": 3,
+                "text": "Paxton Grims"
+            }
+        ]
+        
+## One User [/users/{id}]
++ Parameters
+    + id
+
+### Get One User [GET]
++ Response 200 (application/json)
+
+        "user": {
+            "id": 1,
+            "name": "Hory slime"
+        }
+        
+## User Messages Collection [/users/{id}/messages]
++ Parameters
+    + id
+
+### List All User Messages [GET]
++ Response 200 (application/json)
+
+        "messages": [
+            {
+                "id": 624,
+                "text": "Modi autem error ad quia quis nostrum aliquam.",
+                "user_id": 1,
+                "user": {
+                    "id": 1,
+                    "name": "Julianne Legros"
+                }
+            },
+            {
+                "id": 1259,
+                "text": "Reprehenderit qui dolores atque debitis amet dolor quis.",
+                "user_id": 1,
+                "user": {
+                    "id": 1,
+                    "name": "Julianne Legros"
+                }
+            },
+            {
+                "id": 1448,
+                "text": "Cupiditate ratione in enim et non nesciunt eum.",
+                "user_id": 1,
+                "user": {
+                    "id": 1,
+                    "name": "Julianne Legros"
+                }
+            }
+        }
