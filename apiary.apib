@@ -74,6 +74,19 @@ form of choices.
                     }
                 ]
             }
+            
+## One Message [/messages/{id}]
++ Parameter
+    + id (required, number, `1`) ... ID of the Message in form of an integer.
+
+### Get One Message [GET]
++ Response 200 (application/json)
+
+        "message": {
+            "id": 1,
+            "text": "Ducimus quisquam qui natus magnam quam.",
+            "user_id": 273
+        }
 
 ## Users Collection [/users]
 
@@ -97,7 +110,7 @@ form of choices.
         
 ## One User [/users/{id}]
 + Parameters
-    + id
+    + id (required, number, `1`) ... ID of the User in form of an integer.
 
 ### Get One User [GET]
 + Response 200 (application/json)
@@ -109,7 +122,7 @@ form of choices.
         
 ## User Messages Collection [/users/{id}/messages]
 + Parameters
-    + id
+    + id (required, number, `1`) ... ID of the User in form of an integer.
 
 ### List All User Messages [GET]
 + Response 200 (application/json)
