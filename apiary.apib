@@ -29,21 +29,16 @@ MySQL勉強会用ウェブAPI
             }
         ]
 
-### Create a New Question [POST]
+### Create a New Message [POST]
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
+新規メッセージを作成します。 JSONオブジェクトにメッセージ本文とユーザーIDが必要です。
 
 + Request (application/json)
 
         {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
+            "question": "Aut dolor ex eos enim iste reiciendis sed.",
+            "user": [
+                "id": 1
             ]
         }
 
@@ -51,27 +46,15 @@ form of choices.
 
     + Headers
 
-            Location: /questions/2
+            Location: /messages
 
     + Body
 
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
+                "message": "Aut dolor ex eos enim iste reiciendis sed.",
+                "user": [
+                    "id": 1,
+                    "name": "Hory slime"
                 ]
             }
             
